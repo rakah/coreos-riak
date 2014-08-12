@@ -3,6 +3,15 @@ coreos-riak
 
 Docker assets to initialize a Riak cluster on CoreOS
 
+About
+-----
+
+This Docker repository can be deployed on CoreOS and uses the status of the
+etcd cluster to coordinate startup of a Riak cluster.  If a cluster member is
+found to be the primary for etcd, then it also becomes the initial node in the
+Riak cluster.  I am currently running Docker containers on separate EC2
+instances, not Docker containers on a single host.
+
 Getting Started
 ---------------
 
