@@ -23,7 +23,9 @@ if [ "$DOCKER_RIAK_ETCD_CLUSTERING" = "1" ]
     fi
   done
 
-  sed -i.bak s/127.0.0.1/$DOCKER_HOST_IP/ /etc/riak/vm.args
+  # it appears that this has been made to listen on 0.0.0.0 in riak.conf,
+  # actually wait no that's not the whole story we do have to make sure we set the nodename
+  sed -i.bak s/127.0.0.1/$DOCKER_HOST_IP/ /etc/riak/riak.conf
   if [ "$ETCD_PRIMARY" = "$DOCKER_HOST_IP" ]
   then
     echo ETCD_PRIMARY is $ETCD_PRIMARY
